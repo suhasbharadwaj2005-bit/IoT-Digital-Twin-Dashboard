@@ -1,0 +1,168 @@
+[
+    {
+        "id": "mqtt_temperature",
+        "type": "mqtt in",
+        "z": "machine_monitor",
+        "name": "Temperature",
+        "topic": "machine/temperature",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "mqtt_broker",
+        "x": 130,
+        "y": 100,
+        "wires": [
+            [
+                "temperature_gauge"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_vibration",
+        "type": "mqtt in",
+        "z": "machine_monitor",
+        "name": "Vibration",
+        "topic": "machine/vibration",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "mqtt_broker",
+        "x": 130,
+        "y": 180,
+        "wires": [
+            [
+                "vibration_gauge"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_rpm",
+        "type": "mqtt in",
+        "z": "machine_monitor",
+        "name": "RPM",
+        "topic": "machine/rpm",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "mqtt_broker",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "rpm_gauge"
+            ]
+        ]
+    },
+    {
+        "id": "temperature_gauge",
+        "type": "ui_gauge",
+        "z": "machine_monitor",
+        "name": "Temperature Gauge",
+        "group": "machine_group",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 20,
+        "max": 40,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "30",
+        "seg2": "35",
+        "x": 390,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "vibration_gauge",
+        "type": "ui_gauge",
+        "z": "machine_monitor",
+        "name": "Vibration Gauge",
+        "group": "machine_group",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Vibration",
+        "label": "mm/s",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 5,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "3",
+        "seg2": "4",
+        "x": 390,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "rpm_gauge",
+        "type": "ui_gauge",
+        "z": "machine_monitor",
+        "name": "RPM Gauge",
+        "group": "machine_group",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "RPM",
+        "label": "rpm",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 2500,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "1800",
+        "seg2": "2200",
+        "x": 390,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "mqtt_broker",
+        "type": "mqtt-broker",
+        "name": "Mosquitto",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true
+    },
+    {
+        "id": "machine_monitor",
+        "type": "tab",
+        "label": "Machine Monitoring",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "machine_group",
+        "type": "ui_group",
+        "name": "Machine Parameters",
+        "tab": "machine_dashboard",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "machine_dashboard",
+        "type": "ui_tab",
+        "name": "Industrial Machine",
+        "icon": "dashboard",
+        "order": 1
+    }
+]
